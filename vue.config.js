@@ -1,7 +1,6 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -70,9 +69,6 @@ module.exports = {
       }
     },
     devtool: (process.env.NODE_ENV !== 'production') ? 'eval-source-map' : false,
-    plugins: [
-      new FriendlyErrorsPlugin({})
-    ],
     module: {
       rules: [
         ...(process.env.NODE_ENV === 'development' ? [createLintingRule()] : [])
